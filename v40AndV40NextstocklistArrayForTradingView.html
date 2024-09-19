@@ -1,0 +1,229 @@
+<!-- function splitArrayIntoChunks(arr) { let result = []; for (let i = 0; i <
+arr.length; i += 30) { let chunk = arr.slice(i, i + 30); result.push(chunk); }
+return result; } const V40StockNames = [ "NIFTYBEES", "RELIANCE", "BANKBEES",
+"HDFCBANK", "ICICIBANK", "AXISBANK", "KOTAKBANK", "HCLTECH", "INFY", "TCS",
+"HDFCAMC", "NAM-INDIA", "HDFCLIFE", "ICICIPRULI", "ICICIGI", "BAJAJFINSV",
+"BAJAJHLDNG", "BAJFINANCE", "HINDUNILVR", "NESTLEIND", "PGHH", "PIDILITIND",
+"COLPAL", "DABUR", "GILLETTE", "MARICO", "ITC", "TITAN", "PAGEIND", "BATAINDIA",
+"HAVELLS", "WHIRLPOOL", "GLAXO", "ABBOTIND", "PFIZER", "SANOFI", "AKZOINDIA",
+"ASIANPAINT", "BERGEPAINT", "BAJAJ-AUTO", ]; const V40NextStockNames = [
+"EQUITASBNK", "UJJIVANSFB", "5PAISA", "ANGELONE", "ISEC", "MOTILALOFS", "MCX",
+"OFSS", "TATAELXSI", "TEAMLEASE", "SIS", "ASTRAZEN", "BAYERCROP", "ERIS",
+"LALPATHLAB", "FINEORG", "CAPLIPOINT", "VINATIORGA", "INDIGOPNTS", "KANSAINER",
+"3MINDIA", "GODREJCP", "FINCABLES", "DIXON", "CERA", "HONAUT", "JCHAC",
+"LUXIND", "POLYCAB", "RAJESHEXPO", "RELAXO", "SFL", "SYMPHONY", "VIPIND",
+"TTKPRESTIG", "BOSCHLTD", "EICHERMOT", "MCDOWELL-N", "RADICO", "SUNTV", ]; //
+Split array into chunks of 30 const V40NextArrays =
+splitArrayIntoChunks(V40NextStockNames); const V40Arrays =
+splitArrayIntoChunks(V40StockNames); // Loop through each chunk and display it
+for (let i = 0; i < V40NextArrays.length; i++) { console.log(`V40Next
+(${V40NextArrays[i].length} items):`); console.log(V40NextArrays[i]);
+console.log("\n"); } for (let i = 0; i < V40Arrays.length; i++) {
+console.log(`V40 ${i + 1} (${V40Arrays[i].length} items):`);
+console.log(V40Arrays[i]); console.log("\n"); } // Exit the process
+process.exit(); -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock List Arrays</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .stock-list {
+        margin: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+      }
+      .stock-list h3 {
+        margin-top: 0;
+      }
+      .copy-btn {
+        border-radius: 20px;
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #0056b3;
+        border: none;
+        color: white;
+        cursor: pointer;
+        width: 50px;
+        transition: width 0.1s, background-color 0.2s;
+      }
+
+      .copy-btn.copied {
+        background-color: #431766;
+        width: 200px;
+      }
+
+      .copy-btn:hover {
+        background-color: #003d7a;
+        /* width: 180px; */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content"></div>
+    <div id="toast" class="toast"></div>
+
+    <script>
+      function splitArrayIntoChunks(arr) {
+        let result = [];
+        for (let i = 0; i < arr.length; i += 30) {
+          let chunk = arr.slice(i, i + 30);
+          result.push(chunk);
+        }
+        return result;
+      }
+
+      const V40StockNames = [
+        "NIFTYBEES",
+        "RELIANCE",
+        "BANKBEES",
+        "HDFCBANK",
+        "ICICIBANK",
+        "AXISBANK",
+        "KOTAKBANK",
+        "HCLTECH",
+        "INFY",
+        "TCS",
+        "HDFCAMC",
+        "NAM_INDIA",
+        "HDFCLIFE",
+        "ICICIPRULI",
+        "ICICIGI",
+        "BAJAJFINSV",
+        "BAJAJHLDNG",
+        "BAJFINANCE",
+        "HINDUNILVR",
+        "NESTLEIND",
+        "PGHH",
+        "PIDILITIND",
+        "COLPAL",
+        "DABUR",
+        "GILLETTE",
+        "MARICO",
+        "ITC",
+        "TITAN",
+        "PAGEIND",
+        "BATAINDIA",
+        "HAVELLS",
+        "WHIRLPOOL",
+        "GLAXO",
+        "ABBOTINDIA",
+        "PFIZER",
+        "SANOFI",
+        "AKZOINDIA",
+        "ASIANPAINT",
+        "BERGEPAINT",
+        "BAJAJ_AUTO",
+      ];
+
+      const V40NextStockNames = [
+        "EQUITASBNK",
+        "UJJIVANSFB",
+        "5PAISA",
+        "ANGELONE",
+        "ISEC",
+        "MOTILALOFS",
+        "MCX",
+        "OFSS",
+        "TATAELXSI",
+        "TEAMLEASE",
+        "SIS",
+        "ASTRAZEN",
+        "BAYERCROP",
+        "ERIS",
+        "LALPATHLAB",
+        "FINEORG",
+        "CAPLIPOINT",
+        "VINATIORGA",
+        "INDIGOPNTS",
+        "KANSAINER",
+        "3MINDIA",
+        "GODREJCP",
+        "FINCABLES",
+        "DIXON",
+        "CERA",
+        "HONAUT",
+        "JCHAC",
+        "LUXIND",
+        "POLYCAB",
+        "RAJESHEXPO",
+        "RELAXO",
+        "SFL",
+        "SYMPHONY",
+        "VIPIND",
+        "TTKPRESTIG",
+        "BOSCHLTD",
+        "EICHERMOT",
+        "MCDOWELL_N",
+        "RADICO",
+        "SUNTV",
+      ];
+
+      // Split array into chunks of 30
+      const V40NextArrays = splitArrayIntoChunks(V40NextStockNames);
+      const V40Arrays = splitArrayIntoChunks(V40StockNames);
+
+      // Get the content div where we will insert the results
+      const contentDiv = document.getElementById("content");
+
+      function copyToClipboard(text, copyButton) {
+        navigator.clipboard.writeText(text).then(
+          () => {
+            copyButton.classList.add("copied");
+            copyButton.textContent = "Text copied to clipboard!";
+            setTimeout(() => {
+              copyButton.classList.remove("copied");
+              copyButton.textContent = "Copy";
+            }, 2000);
+          },
+          (err) => {
+            console.error("Failed to copy text: ", err);
+          }
+        );
+      }
+
+      function displayStockList(arrays, title) {
+        arrays.forEach((array, index) => {
+          // Create a new div for each array
+          const stockListDiv = document.createElement("div");
+          stockListDiv.className = "stock-list";
+
+          // Concatenate "NSE:" with the joined array elements
+          const concatString = array.map((stock) => "NSE:" + stock).join(", ");
+
+          // Add a title to the stock list
+          const stockTitle = document.createElement("h3");
+          stockTitle.textContent = `${title} ${index + 1} (${
+            array.length
+          } items):`;
+          stockListDiv.appendChild(stockTitle);
+
+          // Add the stock names
+          const stockNamesParagraph = document.createElement("p");
+          stockNamesParagraph.textContent = concatString;
+          stockListDiv.appendChild(stockNamesParagraph);
+
+          // Add the copy button
+          const copyButton = document.createElement("button");
+          copyButton.textContent = "Copy";
+          copyButton.className = "copy-btn";
+          copyButton.onclick = () => copyToClipboard(concatString, copyButton);
+          stockListDiv.appendChild(copyButton);
+
+          // Append this stock list to the content div
+          contentDiv.appendChild(stockListDiv);
+        });
+      }
+
+      // Display the V40 and V40Next arrays
+      displayStockList(V40Arrays, "V40");
+      displayStockList(V40NextArrays, "V40Next");
+    </script>
+  </body>
+</html>
